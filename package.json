@@ -1,0 +1,13 @@
+{
+    "name": "word-search-generator",
+    "version": "0.1.0",
+    "description": "",
+    "main": "index.mjs",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "AlejandroRM",
+    "license": "MIT",
+    "type": "module"
+}
