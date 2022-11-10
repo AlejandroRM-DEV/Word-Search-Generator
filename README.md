@@ -1,46 +1,64 @@
 # WordSearch Generator
-## Ejemplo 
+## Usage
+Pass a string array and an N number for the matrix dimension.
+```js
+const words = ["HOLA", "AMIGO", "PROGRAMADOR", "BIENVENIDO", "PRUEBA", "PALABRA", "ALEATORIA"];
+const { grid, solution } = wsg(words, 25);
 ```
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ P
-_ _ _ _ _ _ _ B I E N V E N I D O _ _ R
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ O
-_ _ _ _ _ _ _ _ _ _ _ _ P A L A B R A G
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ P _ _ _ R
-_ _ _ _ _ _ _ _ _ A _ _ _ _ _ R _ _ _ A
-_ _ _ _ _ _ _ _ L _ _ _ H _ _ U _ _ _ M
-_ _ _ _ _ _ _ E _ _ _ _ _ O _ E _ _ _ A
-_ _ _ _ _ _ A _ _ _ _ _ _ _ L B _ _ _ D
-_ _ _ _ _ T _ _ _ _ _ _ _ _ _ A _ _ _ O
-_ _ _ _ O _ _ _ _ _ _ _ _ _ _ _ _ _ _ R
-_ _ _ R _ _ _ _ _ _ _ A _ _ _ _ _ _ _ _
-_ _ I _ _ _ _ _ _ _ _ M _ _ _ _ _ _ _ _
-_ A _ _ _ _ _ _ _ _ _ I _ _ _ _ _ _ _ _
-_ _ _ _ _ _ _ _ _ _ _ G _ _ _ _ _ _ _ _
-_ _ _ _ _ _ _ _ _ _ _ O _ _ _ _ _ _ _ _
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+## Example 
+Solution
 ```
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ A _ _ _ _ _ _ _ _
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ B _ _ _ _ _ _ _ _ _
+O _ _ _ _ _ _ _ _ _ _ _ _ _ E _ _ _ _ _ _ _ _ _ _
+D _ _ _ _ _ _ _ _ _ _ _ _ U _ _ _ _ _ _ _ _ _ _ _
+I _ _ _ _ _ _ _ _ _ _ _ R _ _ _ _ _ _ _ _ _ _ _ _
+N _ _ _ _ _ _ _ _ _ _ P _ _ _ _ _ _ _ _ _ _ _ _ _
+E _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+V _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+N _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+E _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+I _ _ R _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+B _ _ O _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+_ _ _ D _ _ _ _ _ _ _ _ _ _ A R B A L A P _ _ _ _
+_ _ _ A _ _ _ _ _ A _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+_ _ _ M _ _ _ _ L _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+_ _ _ A _ _ _ E _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+_ _ _ R _ _ A _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+_ _ _ G _ T _ _ _ _ H _ _ _ _ _ _ _ _ _ _ _ _ _ _
+_ _ _ O O _ _ _ _ O _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+_ _ _ R _ _ _ _ L _ _ _ O _ _ _ _ _ _ _ _ _ _ _ _
+_ _ I P _ _ _ A _ _ _ _ _ G _ _ _ _ _ _ _ _ _ _ _
+_ A _ _ _ _ _ _ _ _ _ _ _ _ I _ _ _ _ _ _ _ _ _ _
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ M _ _ _ _ _ _ _ _ _
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ A _ _ _ _ _ _ _ _
 ```
-Y J K D O P D R Q S O L N K U H L X H Q
-O I L M Q D B I E Z O T M X X E R S K J
-U Q V L W D D E Q M G O Q V P I U K M P
-E G L U F C O B I E N V E N I D O N F R
-W J Y O Z G A R O D V A L C N H O T S O
-W K J F V Z G R N L N V P A L A B R A G
-U C E D T L E M C W Q J Z Q Y P P O F R
-C T U G T E I Y E A J B D L F R J L W A
-J A V K D A E C L E X W H M I U B G I M
-J B G Y O L P E J Q K L M O H E D N O A
-K X I X L P A U K E P I G P L B X O K D
-C I E S F T D J D R S F T D O A H C J O
-G Z Q O O K N D Q M Y Q B W Z W Z T C R
-E N Q R Y C Z Y Y F T A E B P P T B A J
-G X I A M M W H B B C M H V W O C D T L
-T A W B I Z J J Z H B I D N V X H D F E
-K H G L Y K W Y D G R G M Z V Y Z L N K
-V B Q E H E A G Q C G O T Z L F L R J D
-C V E U L T B N E J S P X F O X T H X L
-A Y F L D G E Y G R I V Z G C J N R B W
+Grid
+```
+Q U J P U M L C I M X S H Y B O X W O G A V V H M
+C L E T O K X X X Y Y X N N P G A J P U W I L F M
+U F W B S R Y Q K Z H P U Y H B J I G L A Q K F N
+O D A Y E K N E C W C T V J E G T T F R N L Q U J
+D D H W Q V T L U C F U M U H M R L D D R A E Y U
+I V C H U H C R F A P P R Y O L H V V S R B C H H
+N G Q Q F O Q T I W H P T K Y U Z K B R M M Z W L
+E D U Z A V Z V C F G F S T R R Z L W Q J K K S U
+V M G U U I V X N E D A U D R K Q Y X J S C K T U
+N N O E K V U J Q S S P M H S Y F X Z E I Q C H M
+E N C R I G A J Z W S D L Z L T G U V F N Z S H C
+I R Q R H N N V Y Y W H U X R N K R I R X T V S C
+B D A O K Q Z Q E S W G O Q P I B I Y V W A F Z G
+Z E A D R J K Z S S Q B V Q A R B A L A P Q D K X
+T U S A B X C I A A D N I O I B S A K P B H H H H
+Q T A M E M M F L U X D L M D J M J Q K K O C L K
+Q M T A S T W E J J I Z F F T N L Y L O T J A I B
+N N J R C O A C Z M I U W D L U L X E K R O S K O
+V H W G O T M L N W H L Q K S B L M X V K N N H A
+E E C O O O X Z J O M I D T S A N T S A F N M F N
+P Q A R N I R H L K T A O A S H T U Y D N P X H Z
+C L I P D I V A A F N G F G R M Y Y L P W K N M K
+E A T O A C I S O B N C Q O I M L Q B Z C Z M E Y
+X X N T I H W K C J A N G S Z M H G N T J E F B V
+Y I D H Q D E H F F P M C B U A A A Z X N X Z Q Y
 ```

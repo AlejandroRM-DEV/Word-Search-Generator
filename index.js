@@ -1,20 +1,16 @@
-const random = (min, max) => {
-	min = Math.ceil(min);
-	max = Math.floor(max);
-	return Math.floor(Math.random() * (max - min) + min);
-};
+const MAX_RETRIES = 5;
+const ORIENTATIONS = [
+	"left-right",
+	"right-left",
+	"up-down",
+	"down-up",
+	"diagonal-down-left-right",
+	"diagonal-down-right-left",
+	"diagonal-up-left-right",
+	"diagonal-up-right-left",
+];
 
-const makeGrid = (words, n) => {
-	const orientations = [
-		"left-right",
-		"right-left",
-		"up-down",
-		"down-up",
-		"diagonal-down-left-right",
-		"diagonal-down-right-left",
-		"diagonal-up-left-right",
-		"diagonal-up-right-left",
-	];
+export default function makeGrid(words, n) {
 	const grid = Array(n)
 		.fill(null)
 		.map(() => Array(n).fill(null));
@@ -24,10 +20,11 @@ const makeGrid = (words, n) => {
 
 	for (const word of words) {
 		const wordLength = word.length;
-		let placed = false;
-		while (!placed) {
+		let placed = false,
+			retriesCounter = 0;
+		while (!placed && retriesCounter < MAX_RETRIES) {
 			let stepX, stepY, positionX, positionY, endingX, endingY, failed;
-			switch (orientations[random(0, 8)]) {
+			switch (ORIENTATIONS[random(0, 8)]) {
 				case "left-right":
 					stepX = 0;
 					stepY = 1;
@@ -69,8 +66,7 @@ const makeGrid = (words, n) => {
 			positionY = random(0, n);
 			endingX = positionX + wordLength * stepX;
 			endingY = positionY + wordLength * stepY;
-			if (endingX < 0 || endingX > n) continue;
-			if (endingY < 0 || endingY > n) continue;
+			if (endingX < 0 || endingX > n || endingY < 0 || endingY > n) continue;
 
 			// Check if the word has obstacles; if we cross another word, it must be with the same character.
 			failed = false;
@@ -78,7 +74,7 @@ const makeGrid = (words, n) => {
 				const newPositionX = positionX + i * stepX;
 				const newPositionY = positionY + i * stepY;
 
-				if (grid[newPositionX][newPositionY] != null) {
+				if (grid[newPositionX][newPositionY] !== null) {
 					if (grid[newPositionX][newPositionY] === word.charAt(i)) {
 						continue;
 					} else {
@@ -90,7 +86,7 @@ const makeGrid = (words, n) => {
 
 			// If we fail, we try to place the word with new coordinates; if we succeed, we fill the matrix.
 			if (failed) {
-				continue;
+				retriesCounter++;
 			} else {
 				for (let i = 0; i < wordLength; i++) {
 					const newPositionX = positionX + i * stepX;
@@ -107,11 +103,17 @@ const makeGrid = (words, n) => {
 	// Fill the rest of the spaces in the matrix with random characters.
 	for (let x = 0; x < n; x++) {
 		for (let y = 0; y < n; y++) {
-			if (grid[x][y] == null) grid[x][y] = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+			if (grid[x][y] === null) {
+				grid[x][y] = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+			}
 		}
 	}
 
 	return { grid, solution };
-};
+}
 
-export default makeGrid;
+function random(min, max) {
+	min = Math.ceil(min);
+	max = Math.floor(max);
+	return Math.floor(Math.random() * (max - min) + min);
+}
