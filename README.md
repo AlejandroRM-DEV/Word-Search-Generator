@@ -1,10 +1,13 @@
-# WordSearch Generator
+# Word Search Generator
+A word search, word find, word seek, word sleuth or mystery word puzzle is a word game that consists of the letters of words placed in a grid, which usually has a rectangular or square shape. The objective of this puzzle is to find and mark all the words hidden inside the box. The words may be placed horizontally, vertically, or diagonally. 
+
 ## Usage
 Pass a string array and an N number for the matrix dimension.
 ```js
 const words = ["HOLA", "AMIGO", "PROGRAMADOR", "BIENVENIDO", "PRUEBA", "PALABRA", "ALEATORIA"];
 const { grid, solution } = wsg(words, 25);
 ```
+
 ## Example 
 Solution
 ```

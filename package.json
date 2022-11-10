@@ -1,13 +1,21 @@
 {
-    "name": "word-search-generator",
-    "version": "0.1.0",
-    "description": "",
-    "main": "index.mjs",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [],
-    "author": "AlejandroRM",
-    "license": "MIT",
-    "type": "module"
+  "name": "@alejandrorm-dev/word-search-generator",
+  "version": "1.0.0",
+  "description": "A word search, word find, word seek, word sleuth or mystery word puzzle is a word game that consists of the letters of words placed in a grid, which usually has a rectangular or square shape. The objective of this puzzle is to find and mark all the words hidden inside the box. The words may be placed horizontally, vertically, or diagonally.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "AlejandroRM-DEV (https://github.com/AlejandroRM-DEV)",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlejandroRM-DEV/Wordsearch-Generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AlejandroRM-DEV/Wordsearch-Generator/issues"
+  },
+  "homepage": "https://github.com/AlejandroRM-DEV/Wordsearch-Generator#readme"
 }
